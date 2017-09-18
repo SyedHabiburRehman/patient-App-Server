@@ -2,10 +2,10 @@ const Signup = require('../models/signup');
 
 module.exports = {
 
-    get(req, res, next) {
+    get: (req, res, next) => {
         const patientProps = req.body;
         console.log('************', patientProps);
-        Signup.find({ email: patientProps.email })
+        Signup.findOne({ email: patientProps.email })
             .then((patients) => res.send(patients))
             .catch(next);
     },
@@ -21,7 +21,7 @@ module.exports = {
     //         .catch(next);
     // },
 
-    create(req, res, next) {
+    create: (req, res, next) => {
         const patientProps = req.body;
         console.log('************', patientProps)
         Signup.findOne({ email: patientProps.email })
