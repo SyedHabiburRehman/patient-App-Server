@@ -9,7 +9,8 @@ const app = express();
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://syedhabib:123456@ds141474.mlab.com:41474/patientapp', {
+// mongoose.connect('mongodb://syedhabib:123456@ds141474.mlab.com:41474/patientapp', {
+mongoose.connect('mongodb://localhost/patientapp', {
     useMongoClient: true
 });
 
