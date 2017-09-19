@@ -3,35 +3,34 @@ const Signup = require('../models/signup');
 module.exports = {
 
     get: (req, res, next) => {
-        const patientProps = req.body;
-        console.log('************', patientProps);
-        Signup.findOne({ email: patientProps.email })
-            .then((patients) => res.send(patients))
+        const userProps = req.body;
+        console.log('---------', userProps);
+        // Signup.findOne({ email: 'syed@gmail.com', password: '123456' })
+        Signup.findOne({ email: userProps.email, password: userProps.password })
+            .then((user) => {
+                if (user !== null) {
+                    console.log(user)
+                    res.send(user)
+                } else {
+                    res.send({ error: 'email or password is incorrect' })
+                }
+            })
             .catch(next);
     },
 
-    // index(req, res, next) {
-    //     const { lng, lat } = req.query;
-
-    //     Driver.geoNear(
-    //         { type: 'Point', coordinates: [lng, lat] },
-    //         { spherical: true, maxDistance: 200000 }
-    //     )
-    //         .then((drivers) => res.send(drivers))
-    //         .catch(next);
-    // },
 
     create: (req, res, next) => {
-        const patientProps = req.body;
-        console.log('************', patientProps)
-        Signup.findOne({ email: patientProps.email })
-            .then((patient) => {
-                if (patient === null) {
-                    Signup.create(patientProps)
-                        .then((patient) => res.send(patient))
+        const userProps = req.body;
+        console.log('************', userProps)
+        Signup.findOne({ email: userProps.email })
+        // Signup.findOne({ email: 'syed@gmail.com' })
+            .then((user) => {
+                if (user === null) {
+                    Signup.create(userProps)
+                        .then((user) => res.send(user))
                         .catch("0000000000000000000", next);
                 } else {
-                    console.log('ELSE STATEMENT', patient)
+                    console.log('ELSE STATEMENT', user)
                     res.send({ error: 'email exist' });
                 }
             })

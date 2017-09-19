@@ -1,4 +1,5 @@
 const AuthController = require('../controllers/authController');
+const PatientController = require('../controllers/patientController');
 
 module.exports = (app) => {
     // watch for incoming requests of method GET
@@ -8,7 +9,7 @@ module.exports = (app) => {
     // })
     app.post('/api/signup', AuthController.create);
     app.get('/api/login', AuthController.get);
-    // app.put('/api/drivers/:id', AuthController.edit);
-    // app.delete('/api/drivers/:id', AuthController.delete);
-    // app.get('/api/drivers', DriversController.index);
+    
+    app.post('/api/createPatient',PatientController.create);
+    app.get('/api/getPatient',PatientController.get);
 };
