@@ -8,8 +8,8 @@ module.exports = (app) => {
     //     res.send('hello world')
     // })
     app.post('/api/signup', AuthController.create);
-    app.get('/api/login', AuthController.get);
+    app.post('/api/login', AuthController.getUser);
     
     app.post('/api/createPatient',PatientController.create);
-    app.get('/api/getPatient',PatientController.get);
+    app.post('/api/getPatient',PatientController.getPatients);
 };

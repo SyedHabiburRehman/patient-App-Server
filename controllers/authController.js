@@ -2,7 +2,7 @@ const Signup = require('../models/signup');
 
 module.exports = {
 
-    get: (req, res, next) => {
+    getUser: (req, res, next) => {
         const userProps = req.body;
         console.log('---------', userProps);
         // Signup.findOne({ email: 'syed@gmail.com', password: '123456' })

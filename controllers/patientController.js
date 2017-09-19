@@ -23,7 +23,7 @@ module.exports = {
             .catch(next)
     },
 
-    get: (req, res, next) => {
+    getPatients: (req, res, next) => {
         const { _id } = req.body
         // Signup.findOne({ email: 'syed@gmail.com' })
         Signup.findById({ _id })
